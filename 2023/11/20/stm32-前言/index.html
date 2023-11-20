@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="stm32笔记, alittlestory">
-    <meta name="description" content="">
+    <meta name="keywords" content="stm32-前言, alittlestory">
+    <meta name="description" content="  使用单片机为stm32f103xx型号
+先了解stm32的三种开发方式：
+1、寄存器开发：最底层的开发，运行速度最快。实际上也是使用了固件库，但是不是使用固件库的函数，而是使用了固件库的定义，包括宏定义，结构体定义。和51的开发差不多，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>stm32笔记 | alittlestory</title>
+    <title>stm32-前言 | alittlestory</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
     <style>
@@ -297,12 +299,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">stm32笔记</h1>
+                    <h1 class="description center-align post-title">stm32-前言</h1>
                 </div>
             </div>
         </div>
@@ -324,9 +326,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/stm32%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">stm32笔记</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -352,7 +358,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    310
                 </div>
                 
 
@@ -369,7 +375,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p>  使用单片机为stm32f103xx型号</p>
+<p>先了解stm32的三种开发方式：</p>
+<p>1、<strong>寄存器开发</strong>：最底层的开发，运行速度最快。实际上也是使用了固件库，但是不是使用固件库的函数，而是使用了固件库的定义，包括宏定义，结构体定义。和51的开发差不多，但因为32的寄存器太多，实际开发手动配置大量寄存器极其耗费时间，同时在没有注释的情况下可读性差，所以较少使用。</p>
+<p>2、<strong>标准库开发</strong>：基于寄存器进行了函数的封装，而由于函数封装以及内部大量的检查参数有效性的代码，运行速度相对于寄存器模式较慢。封装之后可以根据函数名字就能明白代码作用，容易记忆，使用方便，所以较多人使用。</p>
+<p>3、<strong>HAL库开发</strong>：全称是Hardware Abstraction Layer（抽象印象层），相比于标准库更加深入的封装，有句柄、回调函数等概念），因此相对于标准库模式有更好的可移植性（可在不同芯片的移植），但代价就是更多的性能损失。</p>
+
                 
             </div>
             <hr/>
@@ -395,7 +406,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/11/20/stm32%E7%AC%94%E8%AE%B0/">http://example.com/2023/11/20/stm32%E7%AC%94%E8%AE%B0/</a>
+                    <a href="http://example.com/2023/11/20/stm32-%E5%89%8D%E8%A8%80/">http://example.com/2023/11/20/stm32-%E5%89%8D%E8%A8%80/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -432,7 +443,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/stm32%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">stm32笔记</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -481,13 +496,13 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2023/11/20/stm32%E7%AC%94%E8%AE%B0/">
+                <a href="/2023/11/20/stm32-%E5%89%8D%E8%A8%80/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="stm32笔记">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="stm32-前言">
                         
-                        <span class="card-title">stm32笔记</span>
+                        <span class="card-title">stm32-前言</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -509,6 +524,14 @@
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/stm32%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">stm32笔记</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -744,7 +767,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">60</span>
+                        class="white-color">370</span>
             
             
             

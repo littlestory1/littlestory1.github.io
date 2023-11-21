@@ -3,7 +3,7 @@
 <html lang="zh">
 <head>
     <meta charset="utf-8" />
-    <title>demo | alittlestory</title>
+    <title>stm32前言 | alittlestory</title>
     <meta name="author" content="alittlestory" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -150,7 +150,7 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>demo</h1>
+        <h1>stm32前言</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -161,10 +161,34 @@
         </span>
         
         
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/stm32/" style="color: #00a596">stm32</a>
+            </span>
+            
+        </span>
+        
     </div>
     
     <div class="content" v-pre>
-        
+        <p> <strong>前言</strong></p>
+<p>主要用于记录stm32的知识点以及学习过程，这样慢慢积累下来，会有莫名的成就感</p>
+<p>如果有误，欢迎加我qq指出错误</p>
+<p><strong>使用板子：</strong></p>
+<p>stm32f103c8t6最小系统板</p>
+<p><strong>stm32三种开发方式的区别</strong></p>
+<ul>
+<li><strong>寄存器模式</strong>：最底层的开发，运行速度最快。实际上也是使用了固件库，但是不是使用固件库的函数，而是使用了固件库的定义，包括宏定义，结构体定义。和51的开发差不多，但因为32的寄存器太多，实际开发手动配置大量寄存器极其耗费时间，同时在没有注释的情况下可读性差，所以较少使用。</li>
+<li><strong>标准库模式</strong>：基于寄存器进行了函数的封装，而由于函数封装以及内部大量的检查参数有效性的代码，运行速度相对于寄存器模式较慢。封装之后可以根据函数名字就能明白代码作用，容易记忆，使用方便，所以较多人使用。</li>
+<li><strong>HAL库模式</strong>：全称是Hardware Abstraction Layer（抽象印象层），相比于标准库更加深入的封装，有句柄、回调函数等概念，因此相对于标准库模式有更好的可移植性（可在不同芯片的移植），但代价就是更多的性能损失。</li>
+</ul>
+
     </div>
     
     

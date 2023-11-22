@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://example.com</id>
+    <id>https://littlestory1.github.io</id>
     <title>昨日已逝，明日未知，而今日为金</title>
     <subtitle></subtitle>
-    <icon>http://example.com/images/favicon.ico</icon>
-    <link href="http://example.com" />
+    <icon>https://littlestory1.github.io/images/favicon.ico</icon>
+    <link href="https://littlestory1.github.io" />
     <author>
       <name>alittlestory</name>
     </author>
     <updated>2023-11-21T14:38:11.000Z</updated>
     <entry>
-        <id>http://example.com/2023/11/21/stm32/stm32%EF%BC%88%E5%89%8D%E8%A8%80%EF%BC%89/</id>
+        <id>https://littlestory1.github.io/2023/11/21/stm32/stm32%EF%BC%88%E5%89%8D%E8%A8%80%EF%BC%89/</id>
         <title>stm32前言</title>
-        <link rel="alternate" href="http://example.com/2023/11/21/stm32/stm32%EF%BC%88%E5%89%8D%E8%A8%80%EF%BC%89/"/>
+        <link rel="alternate" href="https://littlestory1.github.io/2023/11/21/stm32/stm32%EF%BC%88%E5%89%8D%E8%A8%80%EF%BC%89/"/>
         <content type="html">&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;主要用于记录 stm32 的知识点以及学习过程，这样慢慢积累下来，会有莫名的成就感&lt;/p&gt;
 &lt;p&gt;如果有误，欢迎加我 qq 指出错误&lt;/p&gt;
@@ -25,18 +25,18 @@
 &lt;li&gt;&lt;strong&gt;HAL 库模式&lt;/strong&gt;：全称是 Hardware Abstraction Layer（抽象印象层），相比于标准库更加深入的封装，有句柄、回调函数等概念，因此相对于标准库模式有更好的可移植性（可在不同芯片的移植），但代价就是更多的性能损失。&lt;/li&gt;
 &lt;/ul&gt;
 </content>
-        <category term="stm32单片机" scheme="http://example.com/categories/stm32/" />
-        <category term="stm32" scheme="http://example.com/tags/stm32/" />
+        <category term="stm32单片机" scheme="https://littlestory1.github.io/categories/stm32/" />
+        <category term="stm32" scheme="https://littlestory1.github.io/tags/stm32/" />
         <updated>2023-11-21T14:38:11.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2023/11/21/note/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
+        <id>https://littlestory1.github.io/2023/11/21/note/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
         <title>第一篇博客</title>
-        <link rel="alternate" href="http://example.com/2023/11/21/note/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+        <link rel="alternate" href="https://littlestory1.github.io/2023/11/21/note/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
         <content type="html">&lt;p&gt;觉得原本的博客主题过于花里胡哨，于是换了个主题，然后把全部文章删了，重新整理，重新写&lt;/p&gt;
 </content>
-        <category term="杂谈" scheme="http://example.com/categories/note/" />
-        <category term="杂谈" scheme="http://example.com/tags/%E6%9D%82%E8%B0%88/" />
+        <category term="杂谈" scheme="https://littlestory1.github.io/categories/note/" />
+        <category term="杂谈" scheme="https://littlestory1.github.io/tags/%E6%9D%82%E8%B0%88/" />
         <updated>2023-11-21T14:23:55.000Z</updated>
     </entry>
 </feed>

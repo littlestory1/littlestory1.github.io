@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <rss version="2.0">
     <channel>
-        <title>alittlestory</title>
+        <title>昨天是段历史，明天是个谜团，而今天是天赐的礼物</title>
         <subtitle></subtitle>
         <icon>http://example.com/images/favicon.ico</icon>
         <link>http://example.com</link>
@@ -9,7 +9,7 @@
           <name>alittlestory</name>
         </author>
         <description></description>
-        <language>zh_CN</language>
+        <language>zh-CN</language>
         <pubDate>Tue, 21 Nov 2023 22:38:11 +0800</pubDate>
         <lastBuildDate>Tue, 21 Nov 2023 22:38:11 +0800</lastBuildDate>
         <item>

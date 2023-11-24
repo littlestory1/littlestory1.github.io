@@ -11,7 +11,7 @@
             "url": "https://littlestory1.github.io/2023/11/24/stm32/stm32-GPIO/",
             "title": "stm32(GPIO)",
             "date_published": "2023-11-24T12:57:49.000Z",
-            "content_html": "",
+            "content_html": "<h4 id=\"首先我们先来学习如何开时钟\"><a class=\"anchor\" href=\"#首先我们先来学习如何开时钟\">#</a> <strong>首先我们先来学习如何开时钟：</strong></h4>\n<p><strong>1：为什么需要开时钟？</strong></p>\n<p>我们可以通俗的理解时钟是外设电路的心脏，不打开时钟就无法使用。每个外设都有独立时钟，如果不打开时钟外设就不能用，原因就是为了低功耗节省用电，不用的外设可以不打开时钟</p>\n<p><strong>2：如何开启对应时钟？</strong></p>\n<p>首先，我们需要看芯片对应的外设总线架构图</p>\n<p><img data-src=\"../../pic/%E6%80%BB%E7%BA%BF%E6%9E%B6%E6%9E%84.jpg\" alt></p>\n<p>假设我们现在需要开 GPIOA 的时钟，我们可以看到 GPIOA 是在 APB2 外设总线上的，那么开启 GPIOA 时钟代码如下：</p>\n<figure class=\"highlight c\"><figcaption data-lang=\"c\"></figcaption><table><tr><td data-num=\"1\"></td><td><pre><span class=\"token function\">RCC_APB2PeriphClockCmd</span><span class=\"token punctuation\">(</span>RCC_APB2Periph_GPIOA<span class=\"token punctuation\">,</span> ENABLE<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span></pre></td></tr></table></figure><p>关闭时钟代码如下：</p>\n<pre><code>RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, DISENABLE);\n</code></pre>\n",
             "tags": [
                 "stm32单片机",
                 "stm32"
@@ -22,7 +22,7 @@
             "url": "https://littlestory1.github.io/2023/11/21/stm32/stm32%EF%BC%88%E5%89%8D%E8%A8%80%EF%BC%89/",
             "title": "stm32前言",
             "date_published": "2023-11-21T14:38:11.000Z",
-            "content_html": "<p><strong>前言</strong></p>\n<p>主要用于记录 stm32 的知识点以及学习过程，这样慢慢积累下来，会有莫名的成就感</p>\n<p>如果有误，欢迎加我 qq 指出错误</p>\n<p><strong>使用板子：</strong></p>\n<p>stm32f103c8t6 最小系统板</p>\n<p><strong>stm32 三种开发方式的区别</strong></p>\n<ul>\n<li><strong>寄存器模式</strong>：最底层的开发，运行速度最快。实际上也是使用了固件库，但是不是使用固件库的函数，而是使用了固件库的定义，包括宏定义，结构体定义。和 51 的开发差不多，但因为 32 的寄存器太多，实际开发手动配置大量寄存器极其耗费时间，同时在没有注释的情况下可读性差，所以较少使用。</li>\n<li><strong>标准库模式</strong>：基于寄存器进行了函数的封装，而由于函数封装以及内部大量的检查参数有效性的代码，运行速度相对于寄存器模式较慢。封装之后可以根据函数名字就能明白代码作用，容易记忆，使用方便，所以较多人使用。</li>\n<li><strong>HAL 库模式</strong>：全称是 Hardware Abstraction Layer（抽象印象层），相比于标准库更加深入的封装，有句柄、回调函数等概念，因此相对于标准库模式有更好的可移植性（可在不同芯片的移植），但代价就是更多的性能损失。</li>\n</ul>\n",
+            "content_html": "<p><strong>前言</strong></p>\n<p>主要用于记录 stm32 的知识点以及学习过程，这样慢慢积累下来，会有莫名的成就感</p>\n<p>如果有误，欢迎加我 qq 指出错误</p>\n<p><strong>使用板子：</strong></p>\n<p>stm32f103c8t6 最小系统板</p>\n<p><strong>stm32 三种开发方式的区别</strong></p>\n<ul>\n<li><strong>寄存器模式</strong>：最底层的开发，运行速度最快。实际上也是使用了固件库，但是不是使用固件库的函数，而是使用了固件库的定义，包括宏定义，结构体定义。和 51 的开发差不多，但因为 32 的寄存器太多，实际开发手动配置大量寄存器极其耗费时间，同时在没有注释的情况下可读性差，所以较少使用。</li>\n<li><strong>标准库模式</strong>：基于寄存器进行了函数的封装，而由于函数封装以及内部大量的检查参数有效性的代码，运行速度相对于寄存器模式较慢。封装之后可以根据函数名字就能明白代码作用，容易记忆，使用方便，所以较多人使用。</li>\n<li><strong>HAL 库模式</strong>：全称是 Hardware Abstraction Layer（抽象印象层），相比于标准库更加深入的封装，有句柄、回调函数等概念，因此相对于标准库模式有更好的可移植性（可在不同芯片的移植），但代价就是更多的性能损失。</li>\n</ul>\n<p><strong>本系列采用标准库模式</strong></p>\n",
             "tags": [
                 "stm32单片机",
                 "stm32"

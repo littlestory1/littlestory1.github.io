@@ -14,9 +14,9 @@
         <title>stm32(GPIO)</title>
         <link rel="alternate" href="https://littlestory1.github.io/2023/11/24/stm32/stm32-GPIO/"/>
         <content type="html">&lt;h4 id=&#34;首先我们先来学习如何开时钟&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#首先我们先来学习如何开时钟&#34;&gt;#&lt;/a&gt; &lt;strong&gt;首先我们先来学习如何开时钟：&lt;/strong&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;1：为什么需要开时钟？&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;1为什么需要开时钟&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1为什么需要开时钟&#34;&gt;#&lt;/a&gt; &lt;strong&gt;1：为什么需要开时钟？&lt;/strong&gt;&lt;/h5&gt;
 &lt;p&gt;我们可以通俗的理解时钟是外设电路的心脏，不打开时钟就无法使用。每个外设都有独立时钟，如果不打开时钟外设就不能用，原因就是为了低功耗节省用电，不用的外设可以不打开时钟&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2：如何开启对应时钟？&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;2如何开启对应时钟&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2如何开启对应时钟&#34;&gt;#&lt;/a&gt; &lt;strong&gt;2：如何开启对应时钟？&lt;/strong&gt;&lt;/h5&gt;
 &lt;p&gt;首先，我们需要看芯片对应的外设总线架构图&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;%E6%80%BB%E7%BA%BF%E6%9E%B6%E6%9E%84.jpg&#34; alt=&#34;总线架构&#34;&gt;&lt;/p&gt;
 &lt;p&gt;假设我们现在需要开 GPIOA 的时钟，我们可以看到 GPIOA 是在 APB2 外设总线上的，那么开启 GPIOA 时钟代码如下：&lt;/p&gt;
@@ -26,7 +26,7 @@
 &lt;p&gt;所以我们不仅要知道 GPIO 能够输出高低电平，还要理解为什么有些 GPIO 可以复用某些功能，而其他的不可以。&lt;/p&gt;
 &lt;h4 id=&#34;二-gpio内部结构&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-gpio内部结构&#34;&gt;#&lt;/a&gt; 二、GPIO 内部结构&lt;/h4&gt;
 &lt;p&gt;&lt;img data-src=&#34;GPIO%E7%BB%93%E6%9E%84%E5%9B%BE.jpg&#34; alt=&#34;GPIO结构图&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;我们首先分析上面的结构电路：&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;我们首先分析上面的结构电路&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#我们首先分析上面的结构电路&#34;&gt;#&lt;/a&gt; &lt;strong&gt;我们首先分析上面的结构电路：&lt;/strong&gt;&lt;/h5&gt;
 &lt;p&gt;&lt;strong&gt;1、保护二极管&lt;/strong&gt;： 保护二极管从它的名字就不难想到他是用来对系统进行保护的，通过两个二极管的导通可以防止引脚外部输入电压过低或过高。当电压过高时，上方的保护二极管导通。当电压过低时，下方的二极管导通，防止不正常电压导入到芯片内部造成芯片烧毁。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2、P・MOS 管和 N・MOS 管&lt;/strong&gt;： GPIO 经过两个二极管的保护后向上流入输入模式，向下流入输出模式，而输出模式的控制是由一个由 P・MOS 管和 N・MOS 管组成的单元电路，该电路主要是控制输出的模式，由该结构狗策划给你的单元电路具有推挽输出和开漏输出两种模式。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;当系统配置为推挽输出模式时：&lt;/strong&gt;&lt;/p&gt;
@@ -59,7 +59,7 @@
 &lt;p&gt;&lt;strong&gt;3、输出数据寄存器&lt;/strong&gt;：前面我们知道双了 MOS 管结构电路的输入信号，是由 GPIO 输出数据寄存器 GPIOx_ODR 提供的，因此我们可以通过修改输出数据寄存器的值，就可以修改 GPIO 引脚的输出电平。而置位 / 复位寄存器 GPIOx_BSRR 可以通过修改输出数据寄存器的值，从而影响电路的输出。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;4、复用功能输出&lt;/strong&gt;：复用功能输出中的复用是指 STM32 的其他片上外设对 GPIO 引脚进行控制，此时 GPIO 引脚用作该外设功能的一部分，算是第二用途。从其他外设引出来的复用功能输出信号与 GPIO 本身的数据寄存器都连接到双 MOS 管结构的输入中。&lt;/p&gt;
 &lt;h4 id=&#34;三-输入输出模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-输入输出模式&#34;&gt;#&lt;/a&gt; 三、输入输出模式&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;GPIO 八种模式&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;gpio八种模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#gpio八种模式&#34;&gt;#&lt;/a&gt; &lt;strong&gt;GPIO 八种模式&lt;/strong&gt;&lt;/h5&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -111,19 +111,19 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;3.1 浮空输入&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;31-浮空输入&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#31-浮空输入&#34;&gt;#&lt;/a&gt; &lt;strong&gt;3.1 浮空输入&lt;/strong&gt;&lt;/h5&gt;
 &lt;p&gt;浮空输入模式下， &lt;code&gt;I/O&lt;/code&gt;  端口的电平信号直接进入输入数据寄存器。也就是说，I/O 的电平状态是不确定的，完全由外部输入决定；如果在该引脚悬空（在无信号输入）的情况下，读取该端口的电平是不确定的，通常用于 &lt;code&gt;IIC&lt;/code&gt; 、 &lt;code&gt;USART&lt;/code&gt;  等总线设备上。&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;image-20231125013402022.png&#34; alt=&#34;image-20231125013402022&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3.2 上拉输入模式&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;32-上拉输入模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#32-上拉输入模式&#34;&gt;#&lt;/a&gt; &lt;strong&gt;3.2 上拉输入模式&lt;/strong&gt;&lt;/h5&gt;
 &lt;p&gt;上拉输入模式下， &lt;code&gt;I/O&lt;/code&gt;  端口的电平信号直接进入输入数据寄存器。但是在 &lt;code&gt;I/O&lt;/code&gt;  端口悬空（在无信号输入）的情况下，输入端的电平保持在高电平（并且在 &lt;code&gt;I/O&lt;/code&gt;  端口输入为低电平的时候，输入端的电平也是低电平）&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;image-20231125013449506.png&#34; alt=&#34;image-20231125013449506&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3.3 下拉输入模式&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;33-下拉输入模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#33-下拉输入模式&#34;&gt;#&lt;/a&gt; &lt;strong&gt;3.3 下拉输入模式&lt;/strong&gt;&lt;/h5&gt;
 &lt;p&gt;下拉输入模式下， &lt;code&gt;I/O&lt;/code&gt;  端口的电平信号直接进入输入数据寄存器。但是在 &lt;code&gt;I/O&lt;/code&gt;  端口悬空（在无信号输入）的情况下，输入端的电平保持在低电平；并且在 I/O 端口输入为高电平的时候，输入端的电平也是高电平。&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;image-20231125013542238.png&#34; alt=&#34;image-20231125013542238&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3.4 模拟输入模式&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;34-模拟输入模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#34-模拟输入模式&#34;&gt;#&lt;/a&gt; &lt;strong&gt;3.4 模拟输入模式&lt;/strong&gt;&lt;/h5&gt;
 &lt;p&gt;模拟输入模式下， &lt;code&gt;I/O&lt;/code&gt;  端口的模拟信号（电压信号，而非电平信号）直接模拟输入到片上外设模块，比如 &lt;code&gt;ADC&lt;/code&gt;  模块等。&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;image-20231125013643774.png&#34; alt=&#34;image-20231125013643774&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3.5 开漏输出模式&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;35-开漏输出模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#35-开漏输出模式&#34;&gt;#&lt;/a&gt; &lt;strong&gt;3.5 开漏输出模式&lt;/strong&gt;&lt;/h5&gt;
 &lt;p&gt;当系统配置为开漏输出模式时：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -136,9 +136,9 @@
 &lt;p&gt;若控制输出为 1（它无法直接输出高电平）时，则 P-MOS 管和 N-MOS 管都关闭，所以开漏输出模式下引脚既不输出高电平，也不输出低电平，为高阻态。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;3.6 开漏复用输出模式&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;36-开漏复用输出模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#36-开漏复用输出模式&#34;&gt;#&lt;/a&gt; &lt;strong&gt;3.6 开漏复用输出模式&lt;/strong&gt;&lt;/h5&gt;
 &lt;p&gt;开漏复用输出模式，与开漏输出模式很是类似。只是输出的高低电平的来源，不是让 CPU 直接写输出数据寄存器，取而代之利用片上外设模块的复用功能输出来决定的，一般用于片内外设功能： &lt;code&gt;TX1，MOSI，MISO，SCK，SS&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3.7 推挽输出模式&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;37-推挽输出模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#37-推挽输出模式&#34;&gt;#&lt;/a&gt; &lt;strong&gt;3.7 推挽输出模式&lt;/strong&gt;&lt;/h5&gt;
 &lt;p&gt;当系统配置为推挽输出模式时：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -151,7 +151,7 @@
 &lt;p&gt;当引脚高低电平切换时，两个 MOS 管轮流导通，P 管负责灌电流，N 管负责拉电流，使其负载能力和开关速度都比普通的方式有很大的提高。推挽输出的低电平为 0V，高电平为 3.3V。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;3.8 推挽复用输出模式&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;38-推挽复用输出模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#38-推挽复用输出模式&#34;&gt;#&lt;/a&gt; &lt;strong&gt;3.8 推挽复用输出模式&lt;/strong&gt;&lt;/h5&gt;
 &lt;p&gt;推挽复用输出模式，与推挽输出模式很是类似。只是输出的高低电平的来源，不是让 CPU 直接写输出数据寄存器，而是利用片上外设模块的复用功能输出来决定的，常见采用推挽输出模式的一般为片内外设功能 &lt;code&gt;IIC&lt;/code&gt;  的 &lt;code&gt;SCL&lt;/code&gt; 、 &lt;code&gt;SDL&lt;/code&gt; 。&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;image-20231125014016489.png&#34; alt=&#34;image-20231125014016489&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;四-开漏输出和推挽输出的区别&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#四-开漏输出和推挽输出的区别&#34;&gt;#&lt;/a&gt; 四、开漏输出和推挽输出的区别&lt;/h4&gt;

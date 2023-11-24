@@ -18,14 +18,14 @@
 &lt;p&gt;我们可以通俗的理解时钟是外设电路的心脏，不打开时钟就无法使用。每个外设都有独立时钟，如果不打开时钟外设就不能用，原因就是为了低功耗节省用电，不用的外设可以不打开时钟&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2：如何开启对应时钟？&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;首先，我们需要看芯片对应的外设总线架构图&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;../../pic/%E6%80%BB%E7%BA%BF%E6%9E%B6%E6%9E%84.jpg&#34; alt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;%E6%80%BB%E7%BA%BF%E6%9E%B6%E6%9E%84.jpg&#34; alt=&#34;总线架构&#34;&gt;&lt;/p&gt;
 &lt;p&gt;假设我们现在需要开 GPIOA 的时钟，我们可以看到 GPIOA 是在 APB2 外设总线上的，那么开启 GPIOA 时钟代码如下：&lt;/p&gt;
 &lt;figure class=&#34;highlight c&#34;&gt;&lt;figcaption data-lang=&#34;c&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;RCC_APB2PeriphClockCmd&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;RCC_APB2Periph_GPIOA&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; ENABLE&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;关闭时钟代码如下：&lt;/p&gt;
 &lt;figure class=&#34;highlight c&#34;&gt;&lt;figcaption data-lang=&#34;c&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;RCC_APB2PeriphClockCmd&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;RCC_APB2Periph_GPIOA&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; DISENABLE&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h4 id=&#34;一-gpio是什么&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-gpio是什么&#34;&gt;#&lt;/a&gt; 一、GPIO 是什么？&lt;/h4&gt;
 &lt;p&gt;GPIO 全称 General Purpose Input Output 即通用输入 / 输出，其实 GPIO 的本质就是芯片的一个引脚，通常在 ARM 中所有的 I/O 都是通用的。不过由于每个开发板上都会设计不同的外围电路，这就造成 GPIO 的功能可能有所不同，大部分 GPIO 都是有复用功能的，比如有些 GPIO 可能是串口的 TX 或 RX，也可能是 I2C 的 SCL 或 SDA 线。&lt;/p&gt;
 &lt;p&gt;所以我们不仅要知道 GPIO 能够输出高低电平，还要理解为什么有些 GPIO 可以复用某些功能，而其他的不可以。&lt;/p&gt;
 &lt;h4 id=&#34;二-gpio内部结构&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-gpio内部结构&#34;&gt;#&lt;/a&gt; 二、GPIO 内部结构&lt;/h4&gt;
-&lt;p&gt;&lt;img data-src=&#34;../../pic/GPIO%E7%BB%93%E6%9E%84%E5%9B%BE.jpg&#34; alt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;GPIO%E7%BB%93%E6%9E%84%E5%9B%BE.jpg&#34; alt=&#34;GPIO结构图&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;gpio八种模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#gpio八种模式&#34;&gt;#&lt;/a&gt; GPIO 八种模式&lt;/h4&gt;
 &lt;table&gt;
 &lt;thead&gt;

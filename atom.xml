@@ -21,6 +21,9 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;中断执行流程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#中断执行流程&#34;&gt;#&lt;/a&gt; 中断执行流程&lt;/h2&gt;
 &lt;p&gt;&lt;img data-src=&#34;image-20231128203106761.png&#34; alt=&#34;image-20231128203106761&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;stm32中断&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#stm32中断&#34;&gt;#&lt;/a&gt; stm32 中断&lt;/h1&gt;
+&lt;p&gt;68 个可屏蔽中断同道，包含 EXTI、TIM、ADC、USART、SPI、I2C、RTC 等多个外设&lt;/p&gt;
+&lt;p&gt;使用 NVIC 统一管理中断，每个中断通道都拥有 16 个可编程的优先等级，可对优先级进行分组，进一步设置抢占优先级和响应优先级&lt;/p&gt;
 </content>
         <category term="stm32" scheme="https://littlestory1.github.io/tags/stm32/" />
         <updated>2023-11-28T12:24:47.000Z</updated>

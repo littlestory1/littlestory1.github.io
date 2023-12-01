@@ -25,7 +25,7 @@
 &lt;li&gt;中断嵌套：当一个中断程序正在运行时，又有新的更高优先级的中断源申请中断，cpu 再次暂停当前中断程序，转而去处理新的中断程序，处理完成后依次返回&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;中断执行流程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#中断执行流程&#34;&gt;#&lt;/a&gt; 中断执行流程&lt;/h2&gt;
-&lt;p&gt;&lt;img data-src=&#34;stm32-%E4%B8%AD%E6%96%AD%E7%B3%BB%E7%BB%9F/image-20231128203106761.png&#34; alt=&#34;image-20231128203106761&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image-20231128203106761.png&#34; alt=&#34;image-20231128203106761&#34;&gt;&lt;/p&gt;
  ]]></description>
         </item>
         <item>

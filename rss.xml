@@ -10,8 +10,24 @@
         </author>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Fri, 24 Nov 2023 20:57:49 +0800</pubDate>
-        <lastBuildDate>Fri, 24 Nov 2023 20:57:49 +0800</lastBuildDate>
+        <pubDate>Tue, 28 Nov 2023 20:24:47 +0800</pubDate>
+        <lastBuildDate>Tue, 28 Nov 2023 20:24:47 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">https://littlestory1.github.io/2023/11/28/stm32/stm32-%E4%B8%AD%E6%96%AD%E7%B3%BB%E7%BB%9F/</guid>
+            <title>stm32-中断系统</title>
+            <link>https://littlestory1.github.io/2023/11/28/stm32/stm32-%E4%B8%AD%E6%96%AD%E7%B3%BB%E7%BB%9F/</link>
+            <category term="stm32" scheme="https://littlestory1.github.io/tags/stm32/" />
+            <pubDate>Tue, 28 Nov 2023 20:24:47 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;中断系统&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#中断系统&#34;&gt;#&lt;/a&gt; 中断系统&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;中断：在主程序运行过程中，出现了特定的中断触发条件（中断源），使得 cpu 暂停当前正在运行的程序，转而去处理中断程序，处理完成后又返回原来被暂停的位置继续运行&lt;/li&gt;
+&lt;li&gt;中断优先级：当有多个中断源同时申请中断时，cpu 会根据中断源的轻重缓急进行判决，优先相应更加紧急的中断源&lt;/li&gt;
+&lt;li&gt;中断嵌套：当一个中断程序正在运行时，又有新的更高优先级的中断源申请中断，cpu 再次暂停当前中断程序，转而去处理新的中断程序，处理完成后依次返回&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;中断执行流程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#中断执行流程&#34;&gt;#&lt;/a&gt; 中断执行流程&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;stm32-%E4%B8%AD%E6%96%AD%E7%B3%BB%E7%BB%9F/image-20231128203106761.png&#34; alt=&#34;image-20231128203106761&#34;&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://littlestory1.github.io/2023/11/24/stm32/stm32-GPIO/</guid>
             <title>stm32(GPIO)</title>

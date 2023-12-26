@@ -32,6 +32,7 @@
             <guid isPermalink="true">https://littlestory1.github.io/2023/12/04/stm32/%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%AC%A1/</guid>
             <title>红外计次</title>
             <link>https://littlestory1.github.io/2023/12/04/stm32/%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%AC%A1/</link>
+            <category term="stm32单片机" scheme="https://littlestory1.github.io/categories/stm32/" />
             <category term="stm32" scheme="https://littlestory1.github.io/tags/stm32/" />
             <pubDate>Mon, 04 Dec 2023 21:12:03 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;&lt;strong&gt;连线图：&lt;/strong&gt;&lt;/p&gt;
@@ -65,6 +66,7 @@
             <guid isPermalink="true">https://littlestory1.github.io/2023/11/28/stm32/stm32-%E4%B8%AD%E6%96%AD%E7%B3%BB%E7%BB%9F/</guid>
             <title>stm32-中断系统</title>
             <link>https://littlestory1.github.io/2023/11/28/stm32/stm32-%E4%B8%AD%E6%96%AD%E7%B3%BB%E7%BB%9F/</link>
+            <category term="stm32单片机" scheme="https://littlestory1.github.io/categories/stm32/" />
             <category term="stm32" scheme="https://littlestory1.github.io/tags/stm32/" />
             <pubDate>Tue, 28 Nov 2023 20:24:47 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;中断系统&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#中断系统&#34;&gt;#&lt;/a&gt; 中断系统&lt;/h1&gt;

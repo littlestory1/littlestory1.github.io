@@ -10,8 +10,18 @@
         </author>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Tue, 26 Dec 2023 19:20:54 +0800</pubDate>
-        <lastBuildDate>Tue, 26 Dec 2023 19:20:54 +0800</lastBuildDate>
+        <pubDate>Thu, 29 Feb 2024 03:19:04 +0800</pubDate>
+        <lastBuildDate>Thu, 29 Feb 2024 03:19:04 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">https://littlestory1.github.io/2024/02/29/stm32/stm32%E2%80%94TIM%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD/</guid>
+            <title>stm32—TIM定时中断</title>
+            <link>https://littlestory1.github.io/2024/02/29/stm32/stm32%E2%80%94TIM%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD/</link>
+            <category term="stm32单片机" scheme="https://littlestory1.github.io/categories/stm32/" />
+            <category term="stm32" scheme="https://littlestory1.github.io/tags/stm32/" />
+            <pubDate>Thu, 29 Feb 2024 03:19:04 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;假期摆了几个月，一点没学（摆子是这样的），还有两天开学，打算这两天尽可能的把 stm32 标准库的内容给补完上传到博客，肝就完了。&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://littlestory1.github.io/2023/12/26/note/%E5%AD%A6%E6%9C%9F%E7%BB%93%E6%9D%9F/</guid>
             <title>学期结束</title>

@@ -8,12 +8,47 @@
     <author>
       <name>alittlestory</name>
     </author>
-    <updated>2024-02-28T19:19:04.000Z</updated>
+    <updated>2024-03-14T12:58:15.000Z</updated>
+    <entry>
+        <id>https://littlestory1.github.io/2024/03/14/lanqiao/LED%E6%A8%A1%E5%9D%97/</id>
+        <title>LED模块</title>
+        <link rel="alternate" href="https://littlestory1.github.io/2024/03/14/lanqiao/LED%E6%A8%A1%E5%9D%97/"/>
+        <content type="html">&lt;p&gt;首先先来了解 LED 模块原理图：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image-20240314210251591.png&#34; alt=&#34;image-20240314210251591&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如图所示，8 个 led 和引脚之间有着一个锁存器，&lt;/p&gt;
+&lt;p&gt;了解锁存器作用：&lt;/p&gt;
+&lt;p&gt;理解成开关加存储器的结合体更为贴切，当锁存器使能时，可以用于数据交换；交换后的数据就被关起来了，暂时无法更改，直到下一次锁存器使能进行数据交换。&lt;/p&gt;
+&lt;p&gt;PD2 引脚为控制锁存器引脚，当 PD2 输出高电平时，锁存器解锁，反之上锁。&lt;/p&gt;
+&lt;p&gt;由图可知，LED 拥有公共的 VDD，而为了让二极管导通，PCx 引脚需要输出低电平（即 0）&lt;/p&gt;
+&lt;p&gt;由锁存器的知识可知，PD2 引脚需要是有效电平，才能让 PCx 引脚工作，如图可得，PD2 需要输出高电平（即 1）&lt;/p&gt;
+&lt;p&gt;CUBEMX 配置：&lt;/p&gt;
+&lt;p&gt;GPIO 配置：&lt;/p&gt;
+&lt;p&gt;将所用到的 GPIO 设成输出模式&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image-20240314212415776.png&#34; alt=&#34;image-20240314212415776&#34;&gt;&lt;/p&gt;
+&lt;p&gt;RCC 配置：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image-20240314212608698.png&#34; alt=&#34;image-20240314212608698&#34;&gt;&lt;/p&gt;
+&lt;p&gt;时钟树配置：&lt;/p&gt;
+&lt;p&gt;这里采用内部时钟：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image-20240314212637343.png&#34; alt&gt;&lt;/p&gt;
+&lt;p&gt;led.c:&lt;/p&gt;
+&lt;figure class=&#34;highlight c&#34;&gt;&lt;figcaption data-lang=&#34;c&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;LED_Control&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;u8 led_ctrl&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;// 先熄灭所有 LED 灯&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;//	HAL_GPIO_WritePin (GPIOC,GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15,GPIO_PIN_SET);	// 让 PC8~PC15 输出高电平，熄灭 LED&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;HAL_GPIO_WritePin&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;GPIOC&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0xff00&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;GPIO_PIN_SET&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;		&lt;span class=&#34;token comment&#34;&gt;// 让 PC8~PC15 输出高电平，熄灭 LED&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;HAL_GPIO_WritePin&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;GPIOD&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;GPIO_PIN_2&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;GPIO_PIN_SET&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;	&lt;span class=&#34;token comment&#34;&gt;// 打开锁存器&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;HAL_GPIO_WritePin&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;GPIOD&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;GPIO_PIN_2&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;GPIO_PIN_RESET&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;	&lt;span class=&#34;token comment&#34;&gt;// 关闭锁存器&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// 根据 led_ctrl 来点亮对应的 LED&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;HAL_GPIO_WritePin&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;GPIOC&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;led_ctrl&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;GPIO_PIN_RESET&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;// 根据 led_ctrl 输出低电平，点亮 LED&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;HAL_GPIO_WritePin&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;GPIOD&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;GPIO_PIN_2&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;GPIO_PIN_SET&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;	&lt;span class=&#34;token comment&#34;&gt;// 打开锁存器&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;HAL_GPIO_WritePin&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;GPIOD&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;GPIO_PIN_2&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;GPIO_PIN_RESET&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;	&lt;span class=&#34;token comment&#34;&gt;// 关闭锁存器&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+        <category term="lanqiao" scheme="https://littlestory1.github.io/categories/lanqiao/" />
+        <category term="蓝桥嵌入式" scheme="https://littlestory1.github.io/tags/%E8%93%9D%E6%A1%A5%E5%B5%8C%E5%85%A5%E5%BC%8F/" />
+        <updated>2024-03-14T12:58:15.000Z</updated>
+    </entry>
     <entry>
         <id>https://littlestory1.github.io/2024/02/29/stm32/stm32%E2%80%94TIM%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD/</id>
         <title>stm32—TIM定时中断</title>
         <link rel="alternate" href="https://littlestory1.github.io/2024/02/29/stm32/stm32%E2%80%94TIM%E5%AE%9A%E6%97%B6%E4%B8%AD%E6%96%AD/"/>
         <content type="html">&lt;p&gt;假期摆了几个月，一点没学（摆子是这样的），还有两天开学，打算这两天尽可能的把 stm32 标准库的内容给补完上传到博客，肝就完了。&lt;/p&gt;
+&lt;h2 id=&#34;tim简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#tim简介&#34;&gt;#&lt;/a&gt; TIM 简介&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;TIM（Timer）定时器&lt;/li&gt;
+&lt;li&gt;定时器可以对输入的时钟进行计数，并在计数值达到设定值时触发中断&lt;/li&gt;
+&lt;li&gt;16 位计数器、预分频器、自动重装寄存器的时基单元，在 72MHz 计数时钟下可以实现最大 59.65s 的定时&lt;/li&gt;
+&lt;li&gt;不仅具备基本的定时中断功能，而且还包含内外时钟源选择、输入捕获、输出比较、编码器接口、主从触发模式等多种功能&lt;/li&gt;
+&lt;li&gt;根据复杂度和应用场景分为了高级定时器、通用定时器、基本定时器三种类型&lt;/li&gt;
+&lt;/ul&gt;
 </content>
         <category term="stm32单片机" scheme="https://littlestory1.github.io/categories/stm32/" />
         <category term="stm32" scheme="https://littlestory1.github.io/tags/stm32/" />
